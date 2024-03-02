@@ -4,8 +4,8 @@
  * the Server Side Public License v1 (SSPLv1).
  */
 
-#pragma once
-
+#ifndef CUCKOO_H
+#define CUCKOO_H
 #include "murmur2/murmurhash2.h"
 
 #include <stdbool.h>
@@ -82,3 +82,4 @@ uint64_t CuckooFilter_Count(const CuckooFilter *filter, CuckooHash);
 void CuckooFilter_Compact(CuckooFilter *filter, bool cont);
 void CuckooFilter_GetInfo(const CuckooFilter *cf, CuckooHash hash, CuckooKey *out);
 int CuckooFilter_ValidateIntegrity(const CuckooFilter *cf);
+#endif /* CUCKOO_H */

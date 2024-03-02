@@ -26,11 +26,11 @@
 #define MAKESTRING(n) STRING(n)
 #define STRING(n) #n
 
-extern void (*RedisModule_Free)(void *ptr);
-extern void * (*RedisModule_Calloc)(size_t nmemb, size_t size);
+// extern void (*RedisModule_Free)(void *ptr);
+// extern void * (*RedisModule_Calloc)(size_t nmemb, size_t size);
 
-#define BLOOM_CALLOC RedisModule_Calloc
-#define BLOOM_FREE RedisModule_Free
+#define BLOOM_CALLOC calloc
+#define BLOOM_FREE free
 
 /*
 #ifndef BLOOM_CALLOC
@@ -232,9 +232,8 @@ const char *bloom_version() { return MAKESTRING(BLOOM_VERSION); }
 // Returns 0 on success
 int bloom_validate_integrity(struct bloom *bloom) {
     if (bloom->error <= 0 || bloom->error >= 1.0 ||
-        (bloom->n2 != 0 && bloom->bits < (1ULL << bloom->n2)) ||
-        bloom->bits == 0 || bloom->bits != bloom->bytes * 8 ||
-        bloom->hashes != (int)ceil(LN2 * bloom->bpe)) {
+        (bloom->n2 != 0 && bloom->bits < (1ULL << bloom->n2)) || bloom->bits == 0 ||
+        bloom->bits != bloom->bytes * 8 || bloom->hashes != (int)ceil(LN2 * bloom->bpe)) {
         return 1;
     }
 

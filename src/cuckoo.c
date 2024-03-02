@@ -11,14 +11,12 @@
 #include <assert.h>
 #include <math.h>
 
-/*
 #ifndef CUCKOO_MALLOC
 #define CUCKOO_MALLOC malloc
 #define CUCKOO_CALLOC calloc
 #define CUCKOO_REALLOC realloc
 #define CUCKOO_FREE free
 #endif
-*/
 // int globalCuckooHash64Bit;
 
 static int CuckooFilter_Grow(CuckooFilter *filter);

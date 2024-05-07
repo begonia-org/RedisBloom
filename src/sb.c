@@ -24,7 +24,7 @@ bloom_hashval bloom_calc_hash64(const void *buffer, int len);
 ////////////////////////////////////////////////////////////////////////////////
 #define ERROR_TIGHTENING_RATIO 0.5
 #define CUR_FILTER(sb) ((sb)->filters + ((sb)->nfilters - 1))
-
+// size 是预估的容量，error_rate 是错误率
 static int SBChain_AddLink(SBChain *chain, uint64_t size, double error_rate) {
     chain->filters =
         RedisModule_Realloc(chain->filters, sizeof(*chain->filters) * (chain->nfilters + 1));

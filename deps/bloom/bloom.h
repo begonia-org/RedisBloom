@@ -21,16 +21,24 @@ extern "C" {
  *
  */
 struct bloom {
+    // 哈希函数的个数
     uint32_t hashes;
+    // 是否强制使用64位哈希函数
     uint8_t force64;
+    // 存储的元素个数的2次幂
     uint8_t n2;
+    // 预估的元素个数
     uint64_t entries;
-
+    // 容错误率
     double error;
-    double bpe;
 
+    // 每个元素占用的bit数
+    double bpe;
+    // bit数组
     unsigned char *bf;
+    // 数组的大小字节单位大小
     uint64_t bytes;
+    // 数组的大小bit单位大小
     uint64_t bits;
 };
 

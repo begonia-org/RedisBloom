@@ -589,7 +589,7 @@ typedef struct {
     long long capacity;
 } CFInsertOptions;
 
-static int cfInsertCommon(RedisModuleCtx *ctx, RedisModuleString *keystr, RedisModuleString **items,
+static int lcf(RedisModuleCtx *ctx, RedisModuleString *keystr, RedisModuleString **items,
                           size_t nitems, const CFInsertOptions *options) {
     RedisModuleKey *key = RedisModule_OpenKey(ctx, keystr, REDISMODULE_READ | REDISMODULE_WRITE);
     CuckooFilter *cf = NULL;
